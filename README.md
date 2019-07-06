@@ -9,7 +9,7 @@ example:
 ```
 
 #### request.js
-(axios)[https://www.npmjs.com/package/axios] 前后端分离项目封装
+[axios](https://www.npmjs.com/package/axios) 前后端分离项目封装
 内部一些参数需要根据自身情况进行修改。
 
 
