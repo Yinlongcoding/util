@@ -372,7 +372,7 @@
         return Obj;
       }
     },
-    
+
     /**
      * 数字保留小数方案 -- 直接截取，不向下取整
      * @param {*} value 
@@ -408,6 +408,39 @@
       return _currency + value.substr(0, dot + decimals + 1);
     },
 
+    /**
+     * 四舍五入保留小数
+     * @param  {Number}  num            需要转化的数值
+     * @param  {Integer}  cutNum        保留的小数位数
+     * @param  {Boolean} isRemoveZero    是否移除末尾的0，默认不需要
+     * @return {Number}
+     */
+    toFixed: function (num, cutNum, isRemoveZero) {
+      var sReturn = '0';
+      num = parseFloat(num);
+      if (isNaN(num)) {
+        num = 0;
+      }
+      cutNum = cutNum || 0;
+      if (num.toString() == "NaN") {
+        num = 0;
+      } else {
+        num = num.toFixed(cutNum);
+      }
+
+      sReturn = num.toString();
+      if (isRemoveZero) {
+        // console.log(sReturn);
+        // console.log(typeof sReturn);
+        while (sReturn.indexOf('.') > -1 && sReturn.endsWith('0')) {
+          sReturn = sReturn.substr(0, sReturn.length - 1);
+        }
+        if (sReturn.endsWith(".")) {
+          sReturn = sReturn.substring(0, sReturn.length - 1);
+        }
+      }
+      return sReturn;
+    }
 
   };
 
